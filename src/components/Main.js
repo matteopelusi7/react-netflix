@@ -1,10 +1,16 @@
 import React from 'react'
 import {main} from '../css/main.css'
 
-const Main = () => {
+const Main = ({data}) => {
   return (
-    <div>
-      Main
+    <div className='card-container'>
+      {data.map((el) => {
+        return (
+          <div key={el.id}  className='card'>
+            {el.title}
+          </div>
+        );
+      })}
     </div>
   )
 }
