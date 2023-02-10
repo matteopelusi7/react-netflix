@@ -7,7 +7,8 @@ import React, {useState, useEffect} from 'react'
 
 function App() {
 
-  const [data, setData] = useState([])
+  const [movies, setMovies] = useState([])
+  const [films, setFilms] = useState([])
   const [query, setQuery] = useState('Cerca')
 
   const handleSubmit = (e) => {
@@ -25,7 +26,24 @@ function App() {
     })
     .then( res => {
       console.log(res.data.results)
-      setData(res.data.results)
+      setMovies(res.data.results)
+    })
+    .catch( error => {
+      console.log(error.response)
+    })
+  }
+
+  const fetchFilm = () => {
+    axios.get('https://api.themoviedb.org/3/search/tv', {
+      params: {
+        api_key: 'aec3bd9964f9a8a7bdebc5ebcc0e28cd',
+        language: 'it-IT',
+        query: query,
+      }
+    })
+    .then( res => {
+      console.log(res.data.results)
+      setFilms(res.data.results)
     })
     .catch( error => {
       console.log(error.response)
@@ -34,6 +52,7 @@ function App() {
 
   useEffect(() => {
     fetchMovie()
+    fetchFilm()
   }, [])
   
 
@@ -50,7 +69,7 @@ function App() {
           </form>
         </div>
       </div>
-      <Main data={data} />
+      <Main movies={movies} films={films} />
     </div>
   );
 }

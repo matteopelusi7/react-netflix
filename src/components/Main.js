@@ -1,16 +1,15 @@
 import React from 'react'
 import {main} from '../css/main.css'
+import Film from './Film'
+import Movies from './Movies'
 
-const Main = ({data}) => {
+const Main = ({movies, films}) => {
   return (
-    <div className='card-container'>
-      {data.map((el) => {
-        return (
-          <div key={el.id}  className='card'>
-            {el.title}
-          </div>
-        );
-      })}
+    <div className='container'>
+      <h2>Serie Tv</h2>
+      <Movies movies={movies} />
+      <h2>Film</h2>
+      <Film films={films} />
     </div>
   )
 }
