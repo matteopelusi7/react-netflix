@@ -6,10 +6,14 @@ import Movies from './Movies'
 const Main = ({movies, films}) => {
   return (
     <div className='container'>
-      <h2>Serie Tv</h2>
-      <Movies movies={movies} />
-      <h2>Film</h2>
-      <Film films={films} />
+      <div>
+        <h2>Serie Tv</h2>
+        <Movies movies={movies} />
+      </div>
+      <div>
+        <h2>Film</h2>
+        <Film films={films} />
+      </div>
     </div>
   )
 }
